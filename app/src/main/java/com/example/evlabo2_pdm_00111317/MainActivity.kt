@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import com.example.evlabo2_pdm_00111317.Fragments.DinamicFragment
 import com.example.evlabo2_pdm_00111317.Fragments.StaticFragment
+import kotlinx.android.synthetic.main.fragment_dinamic.*
+import kotlinx.android.synthetic.main.fragment_dinamic.view.*
 
 class MainActivity : AppCompatActivity() , StaticFragment.OnFragmentInteractionListener, DinamicFragment.OnFragmentInteractionListener{
 
@@ -14,6 +16,44 @@ class MainActivity : AppCompatActivity() , StaticFragment.OnFragmentInteractionL
 
     override fun onFragmentInteractionMinus() {
         Log.d("click", "Estoy aprentando el menos")
+
+        if(Color.green(color) == 0 && Color.blue(color) == 0 )
+        {
+            if (Color.red(color)>25)
+            {
+                color = Color.rgb(Color.red(color)-25,0,0)
+
+            }
+            else{
+                color = Color.rgb(225,0,0)
+
+            }
+
+        }else if (Color.red(color) == 0 && Color.blue(color) == 0){
+            if (Color.green(color)>25)
+            {
+                color = Color.rgb(0,Color.green(color)-25,0)
+
+            }
+            else{
+                color = Color.rgb(0,225,0)
+
+            }
+        }else{
+            if (Color.blue(color)>25)
+            {
+                color = Color.rgb(0,0,Color.blue(color)-25)
+
+            }
+            else{
+                color = Color.rgb(0,0,255)
+
+            }
+        }
+
+        background_color.setBackgroundColor(color)
+
+
     }
 
     override fun onFragmentInteractionPlus() {
