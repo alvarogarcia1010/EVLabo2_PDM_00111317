@@ -29,13 +29,21 @@ class DinamicFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_dinamic, container, false)
 
+
         view.background_color.setBackgroundColor(this!!.initColor!!)
+        initMinusButton(view)
+        initPlusButton(view)
 
         return view
     }
 
-    fun onButtonPressed() {
-        listener?.onFragmentInteraction()
+
+    fun initMinusButton(container:View) = container.minus.setOnClickListener {
+        listener?.onFragmentInteractionMinus()
+    }
+
+    fun initPlusButton(container:View) = container.plus.setOnClickListener {
+        listener?.onFragmentInteractionPlus()
     }
 
     /*fun initSearchButton(container:View) = container.btn_search_pokemon.setOnClickListener {
@@ -58,7 +66,8 @@ class DinamicFragment : Fragment() {
 
 
     interface OnFragmentInteractionListener {
-        fun onFragmentInteraction()
+        fun onFragmentInteractionMinus()
+        fun onFragmentInteractionPlus()
     }
 
 }
